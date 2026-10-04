@@ -1,0 +1,7 @@
+.omp/
+.validation/
+dist/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+*.egg-info/

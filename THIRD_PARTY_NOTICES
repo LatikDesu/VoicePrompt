@@ -1,0 +1,14 @@
+# Third-party components and external model assets
+
+No source code from Whisper-Streaming, WhisperLive, Voxtype, SimulStreaming, or WhisperLiveKit is copied into VoicePrompt. Word-agreement/scheduler logic is authored for this project; it does not embed an upstream HypothesisBuffer file. The community plugin directory contains no Python runtime, model weights, venv, CUDA libraries or ONNX graph.
+
+Separately installed helper runtime dependencies are resolved in `helper/uv.lock`; their own distributions carry their licenses. Current tested packages include:
+
+- `faster-whisper` 1.2.1, MIT, https://github.com/SYSTRAN/faster-whisper . The pinned wheel includes `faster_whisper/assets/silero_vad_v6.onnx`; the helper loads that installed asset rather than copying/redistributing it into this project.
+- `CTranslate2` 4.8.2, MIT, https://github.com/OpenNMT/CTranslate2 . CPU int8 supported compute types were verified on one host.
+- `ONNX Runtime` 1.30.0, MIT, https://github.com/microsoft/onnxruntime . The Silero graph runs through its CPUExecutionProvider.
+- `Silero VAD` model source, Silero Team, MIT, https://github.com/snakers4/silero-vad . This product does not bundle a separate copy; the installed faster-whisper asset supplies it. Permission text and copyright are in the upstream MIT license; verify the packaged wheel license at redistribution time.
+- Optional user-downloaded CPU model: `Systran/faster-whisper-small`, Hugging Face model card MIT. The model was explicitly fetched into ignored `.validation/models/cpu-small` on one test host, not distributed with the plugin/helper.
+- Optional unverified CUDA model candidate: `dropbox-dash/faster-whisper-large-v3-turbo`, Hugging Face model card MIT. No CUDA weights were downloaded or profiled here.
+
+No real-user audio or user credentials are part of distributed assets. Review transitive installed package/wheel licenses before public redistribution; installing dependencies independently retains their wheel-level notices.

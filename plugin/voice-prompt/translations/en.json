@@ -1,0 +1,242 @@
+{
+  "settings": {
+    "activation_mode": {
+      "label": "How recording starts",
+      "description": "Press: start and stop with the button or widget; no hotkey is used. Hold: your compositor sends press and release for a shortcut you configure outside the plugin. Hold keyboard: the plugin watches a recording hotkey on a keyboard you select; set the combination in the Recording hotkey field below."
+    },
+    "evdev_device": {
+      "label": "Keyboard for direct hold",
+      "description": "Used only for direct keyboard hold, never for Toggle or compositor Hold. Select the keyboard to watch, not a microphone. Reading its keys requires explicit permission for that device."
+    },
+    "evdev_chord": {
+      "label": "Recording hotkey",
+      "description": "Keyboard combination to hold while recording, for example Ctrl+Space. Empty means unassigned: nothing starts recording from the keyboard and no key is chosen for you. Keys are observed, not captured, so other applications still receive them."
+    },
+    "language": {
+      "label": "Recognition language",
+      "description": "Language expected in your speech. Auto detects it while transcribing and can be less stable for very short phrases."
+    },
+    "device": {
+      "label": "Custom model device",
+      "description": "Used only for a custom model. CPU-small always uses the processor; CUDA-turbo uses NVIDIA with available CUDA libraries."
+    },
+    "model_profile": {
+      "label": "Recognition",
+      "description": "CPU-small uses the processor without NVIDIA. CUDA-turbo uses NVIDIA with CUDA. For a custom model, choose its folder and device in Advanced settings."
+    },
+    "preload": {
+      "label": "Keep model ready in memory",
+      "description": "Load the recognition model at start and keep it after use. The first word appears faster, but memory stays in use while idle."
+    },
+    "after_transcription": {
+      "label": "After dictation",
+      "description": "What happens when you stop recording. Editor only: show the text. Clean or Prompt: also send the text to your LLM. Copy: also copy the text to the clipboard."
+    },
+    "close_after_copy": {
+      "label": "Close editor after Copy",
+      "description": "Close the text window automatically when you press Copy."
+    },
+    "history_enabled": {
+      "label": "Keep dictation history",
+      "description": "Store the last 10 recognized texts on this computer. Disabled by default."
+    },
+    "llm_base_url": {
+      "label": "LLM address (ending in /v1)",
+      "description": "Address of your OpenAI-compatible server, for example http://localhost:8080/v1. Needed only for Clean and Prompt."
+    },
+    "llm_model": {
+      "label": "LLM model name",
+      "description": "Model identifier your server expects, for example qwen2.5:7b. Type it yourself when the server does not list models."
+    },
+    "llm_api_key": {
+      "label": "LLM API key",
+      "description": "Stored openly in Noctalia settings.toml. Empty means no Authorization. Do not publish this file or its backups with a key."
+    },
+    "show_advanced": {
+      "label": "Advanced settings",
+      "description": "Show program/model paths, recognition hints, time limits and LLM instructions. Usually no changes are needed."
+    },
+    "helper_path": {
+      "label": "voiceprompt-helper program",
+      "description": "Optional absolute helper path. Empty finds the standard VoicePrompt installation, then PATH."
+    },
+    "custom_ct2_path": {
+      "label": "Local model folder",
+      "description": "Complete prepared CT2 model. Used only when Custom model is selected."
+    },
+    "glossary": {
+      "label": "Recognition hints (terms)",
+      "description": "Comma-separated names, terms or abbreviations that should be recognized correctly, for example product names."
+    },
+    "idle_unload_seconds": {
+      "label": "Unload after idle (seconds)",
+      "description": "How long the model may stay in memory unused before it is unloaded. 0 keeps it loaded."
+    },
+    "model_load_timeout_seconds": {
+      "label": "Model load time limit (seconds)",
+      "description": "Safety limit for loading the model before the attempt is given up."
+    },
+    "final_timeout_seconds": {
+      "label": "Final recognition limit (seconds)",
+      "description": "Safety limit for the final recognition after you stop recording."
+    },
+    "clean_system_prompt": {
+      "label": "Clean instruction",
+      "description": "Instruction sent with the text for Clean. Editing it changes how Clean rewrites your dictation."
+    },
+    "prompt_system_prompt": {
+      "label": "Prompt instruction",
+      "description": "Instruction sent with the text for Prompt. Editing it changes how Prompt turns dictation into a task."
+    }
+  },
+  "options": {
+    "toggle": {
+      "label": "Press to toggle"
+    },
+    "hold": {
+      "label": "Hold shortcut"
+    },
+    "hold-evdev": {
+      "label": "Hold keyboard"
+    },
+    "ru": {
+      "label": "Russian"
+    },
+    "en": {
+      "label": "English"
+    },
+    "auto": {
+      "label": "Auto"
+    },
+    "cpu": {
+      "label": "Processor"
+    },
+    "cuda": {
+      "label": "NVIDIA card"
+    },
+    "cpu-small": {
+      "label": "Small (CPU)"
+    },
+    "cuda-turbo": {
+      "label": "Turbo (NVIDIA)"
+    },
+    "custom": {
+      "label": "Custom model"
+    },
+    "show": {
+      "label": "Editor only"
+    },
+    "clean": {
+      "label": "Clean (correct text)"
+    },
+    "prompt": {
+      "label": "Prompt (make a task)"
+    },
+    "copy": {
+      "label": "Copy to clipboard"
+    }
+  },
+  "ui": {
+    "idle": "Ready",
+    "starting": "Starting",
+    "recording": "Recording",
+    "finalizing": "Finalizing",
+    "ready": "Ready",
+    "processing": "Processing",
+    "error": "Error",
+    "loading_model": "Loading model",
+    "recording_loading": "Recording · preparing recognition",
+    "degraded": "Live updates slowed; final uses the complete recording.",
+    "stop": "Stop",
+    "cancel": "Cancel",
+    "copy": "Copy",
+    "copied": "Copied",
+    "clean": "Clean",
+    "prompt": "Prompt",
+    "undo": "Undo processing",
+    "restore": "Restore original",
+    "clear": "Clear text",
+    "delete": "Delete recording",
+    "record": "Record",
+    "close": "Close",
+    "editor": "Editor",
+    "setup": "Readiness",
+    "settings": "Settings",
+    "proposal": "Result is a suggestion because the document changed.",
+    "apply": "Apply",
+    "discard": "Discard",
+    "retry": "Retry",
+    "more": "More actions",
+    "clean_hint": "Clean: correct dictated text with the configured LLM",
+    "prompt_hint": "Prompt: turn this text into instructions with the configured LLM",
+    "automatic": "Automatic action enabled",
+    "diagnostics": "Diagnostics",
+    "diagnostics_empty": "Check the selected CPU or CUDA device with Diagnostics.",
+    "check_helper": "Helper",
+    "check_pipewire": "Microphone server",
+    "check_cpu": "CPU recognition",
+    "check_ready": "Ready",
+    "check_unavailable": "Unavailable",
+    "check_not_checked": "Not checked; run Diagnostics",
+    "check_gpu_count": "Available GPUs",
+    "cuda_unavailable": "GPU recognition is unavailable",
+    "cuda_missing_libraries": "Missing CUDA libraries",
+    "cuda_install_hint": "Install the CUDA extra in the helper environment, then check again. The plugin never installs system libraries.",
+    "cuda_driver_hint": "Check the NVIDIA driver and int8_float16 compute support.",
+    "cuda_model_separate": "CUDA libraries work. The selected local STT model loads only for recording or explicit keep-warm.",
+    "error_cuda_unavailable": "CUDA could not load. Open Setup and run Diagnostics for the missing libraries or driver.",
+    "error_model_profile_mismatch": "The selected model folder does not match the profile. Select the matching model or the custom profile.",
+    "error_compute_type_unsupported": "The GPU does not support the selected compute type. Check Diagnostics.",
+    "error_inference_out_of_memory": "Not enough memory for recognition. Close another GPU workload or explicitly select a smaller profile.",
+    "error_hotkey_not_configured": "Choose a real shortcut first; none is assigned.",
+    "error_hotkey_invalid": "Shortcut format is invalid. Example: Ctrl+Space.",
+    "error_evdev_not_installed": "The optional evdev package is required only for direct keyboard hold.",
+    "error_evdev_access_denied": "The selected keyboard cannot be read. Permissions were not changed.",
+    "error_evdev_device_removed": "The selected keyboard was disconnected.",
+    "error_credential_invalid": "The API key contains invalid characters or a line break.",
+    "error_staging_token_invalid": "The private data transfer expired. Retry the operation.",
+    "error_timeout": "The LLM did not finish within 120 seconds. Your text is unchanged; check the provider and retry.",
+    "error_incomplete_response": "The provider closed the connection before completing its response. Your text is unchanged.",
+    "download_model": "Download selected model",
+    "cancel_download": "Cancel download",
+    "refresh_models": "Refresh LLM models",
+    "clear_history": "Clear history",
+    "manual_model": "Manual model ID works even when /models is unavailable.",
+    "setup_description": "Recording needs a helper, a prepared model and an available microphone. All VoicePrompt parameters, including the API key, are on its Noctalia settings page.",
+    "hold_warning": "Toggle and compositor Hold (`hold`) need no keyboard access. Direct keyboard hold (`hold-evdev`) is opt-in, requires permission for the selected keyboard, never assigns a key for you and does not suppress the key in other applications.",
+    "microphone_label": "Microphone",
+    "microphone_default": "System default",
+    "microphone_unavailable": "No microphone detected",
+    "microphone_settings": "Open Audio settings",
+    "microphone_settings_hint": "VoicePrompt records from the system default microphone. Pick the source in Noctalia Audio → Input; More → Microphone opens that chooser. There is no separate microphone list here.",
+    "check_model": "Recognition model",
+    "check_vad": "Speech detector",
+    "recording_ready": "Dictation ready",
+    "recording_not_ready": "Dictation needs setup",
+    "readiness_checking": "Checking dictation readiness…",
+    "llm_parameters_set": "LLM parameters set; checked when Clean or Prompt is used.",
+    "llm_not_connected": "LLM not connected; dictation and Copy still work.",
+    "shortcut_external": "Recording shortcut: external compositor binding (IPC).",
+    "install_helper": "Install helper",
+    "download_progress": "Model download (bytes)",
+    "error_helper_not_installed": "Helper is missing. Use Install helper, then check again.",
+    "error_helper_path_invalid": "The helper override does not exist. Clear it or select an installed executable in Advanced settings.",
+    "error_helper_diagnostics_timeout": "Readiness check timed out. Try again.",
+    "error_helper_diagnostics_invalid": "Helper does not support this readiness report. Update the helper.",
+    "error_installer_unavailable": "Installer assets are missing. Run scripts/install.sh from the received VoicePrompt checkout.",
+    "error_installer_launch_failed": "Could not open the installation terminal.",
+    "error_model_missing": "The selected recognition model is missing. Download it explicitly.",
+    "error_model_corrupt": "The selected model is damaged. Download its managed copy again or select a valid custom model.",
+    "error_model_checksum_mismatch": "Model checksum failed. Download its managed copy again.",
+    "error_configuration_invalid": "Select a valid recognition profile and a prepared folder for a custom model.",
+    "error_pipewire_unavailable": "pw-record is missing. Install PipeWire tools for your distribution.",
+    "error_pipewire_unreachable": "The PipeWire microphone server is unreachable.",
+    "error_pipewire_unverified": "Could not verify the PipeWire server; readiness is not confirmed.",
+    "error_cpu_runtime_unavailable": "CPU recognition dependencies are unavailable. Reinstall the helper.",
+    "error_vad_runtime_unavailable": "Speech detection dependencies are unavailable. Reinstall the helper.",
+    "error_text_too_large": "Text exceeds 64 KiB in UTF-8. The paste was rejected; the current text was kept.",
+    "error_history_not_loaded": "History has not been loaded yet. Existing records will not be overwritten.",
+    "error_helper_owner_replaced": "Helper is reconnecting. The current text is kept and pending saves will resume after history loads.",
+    "microphone_loading": "Checking microphone…"
+  }
+}

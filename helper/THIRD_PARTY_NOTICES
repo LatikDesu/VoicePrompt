@@ -1,0 +1,11 @@
+# Helper dependency notices
+
+VoicePrompt helper is MIT; see LICENSE. Installed runtime dependencies are separately versioned in uv.lock and carry their own licenses. No third-party source code or model weights are copied into the helper wheel.
+
+- faster-whisper 1.2.1 — MIT, https://github.com/SYSTRAN/faster-whisper ; its installed package includes the Silero V6 ONNX graph. Observed graph SHA-256: 4cbf549b8326f60f80f2536d9eefeb450a9abe83365a098031c89719f1be17d2.
+- Silero VAD — Silero Team, MIT, https://github.com/snakers4/silero-vad ; its graph is accessed through faster-whisper's installed distribution rather than vendored into this helper.
+- CTranslate2 4.8.2 — MIT, https://github.com/OpenNMT/CTranslate2 .
+- ONNX Runtime 1.30.0 — MIT, https://github.com/microsoft/onnxruntime .
+- Optional model files are selected/downloaded by the user, not bundled. Explicit CPU candidate: Systran/faster-whisper-small@536b0662742c02347bc0e980a01041f333bce120 (model card MIT). Optional CUDA candidate: dropbox-dash/faster-whisper-large-v3-turbo@0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf (model card MIT, not locally inferred).
+
+Review every resolved transitive wheel license before external redistribution and preserve its license files. See the project's THIRD_PARTY_NOTICES for full provenance and limitations.

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "voiceprompt-helper"
+version = "0.1.0"
+description = "Local capture and transcription helper for the VoicePrompt Noctalia plugin"
+requires-python = ">=3.13,<3.14"
+license = "MIT"
+authors = [{ name = "LatikDesu" }]
+dependencies = [
+  "faster-whisper==1.2.1",
+  "ctranslate2==4.8.2",
+  "onnxruntime==1.30.0",
+  "numpy>=2,<3",
+  "huggingface-hub>=0.24,<2",
+]
+
+[project.optional-dependencies]
+evdev = ["evdev>=1.7,<2"]
+cuda = ["nvidia-cublas-cu12", "nvidia-cudnn-cu12>=9,<10"]
+
+[project.scripts]
+voiceprompt-helper = "voiceprompt.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/voiceprompt"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
